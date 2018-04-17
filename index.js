@@ -9,9 +9,9 @@ var passport = require("passport");
 var BearerStrategy = require('passport-azure-ad').BearerStrategy;
 
 // TODO: Update the first 3 variables
-var tenantID = "fabrikamb2c.onmicrosoft.com";
-var clientID = "25eef6e4-c905-4a07-8eb4-0d08d5df8b3f";
-var policyName = "B2C_1_SUSI";
+var tenantID = "strikedigital.onmicrosoft.com";
+var clientID = "5e6cdd52-3788-4e2a-aff3-6e23d1ffe404";
+var policyName = "B2C_1_StrikeDigital_SignIn_Signup";
 
 var options = {
     identityMetadata: "https://login.microsoftonline.com/" + tenantID + "/v2.0/.well-known/openid-configuration/",
@@ -48,13 +48,13 @@ app.get("/hello",
         var claims = req.authInfo;
         console.log('User info: ', req.user);
         console.log('Validated claims: ', claims);
-        
+
         if (claims['scp'].split(" ").indexOf("demo.read") >= 0) {
-            // Service relies on the name claim.  
+            // Service relies on the name claim.
             res.status(200).json({'name': claims['name']});
         } else {
             console.log("Invalid Scope, 403");
-            res.status(403).json({'error': 'insufficient_scope'}); 
+            res.status(403).json({'error': 'insufficient_scope'});
         }
     }
 );
