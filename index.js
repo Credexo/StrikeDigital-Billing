@@ -19,13 +19,14 @@ var options = {
     policyName: policyName,
     isB2C: true,
     validateIssuer: true,
-    loggingLevel: 'info',
+    loggingLevel: 'debug',
     passReqToCallback: false
 };
 
 var bearerStrategy = new BearerStrategy(options,
     function (token, done) {
         // Send user info using the second argument
+        console.console.log('Inside done function');
         done(null, {}, token);
     }
 );
