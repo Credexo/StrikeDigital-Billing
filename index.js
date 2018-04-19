@@ -26,7 +26,7 @@ var options = {
 var bearerStrategy = new BearerStrategy(options,
     function (token, done) {
         // Send user info using the second argument
-        console.console.log('Inside done function');
+        console.log('Inside done function');
         done(null, {}, token);
     }
 );
